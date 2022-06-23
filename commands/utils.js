@@ -119,7 +119,6 @@ export const run = () => {
   if (out) {
     print(out);
   }
-  window.expressions.clear();
 };
 
 // export const fromBase64 = (str, params) => {
@@ -150,28 +149,3 @@ export const newComp = (userId = 'Unknown user') => {
   compositionContainer.appendChild(comp);
   return comp;
 };
-// export const makePlot = expression => {
-//   const expr = math.compile(expression);
-//   const xValues = math.range(-10, 10, 0.5).toArray();
-//   const yValues = xValues.map(function (x) {
-//     return expr.evaluate({ x: x });
-//   });
-
-//   // render the plot using plotly
-//   const trace1 = {
-//     x: xValues,
-//     y: yValues,
-//     type: 'scatter'
-//   };
-//   const data = [trace1];
-//   Plotly.newPlot('plot', data, {
-//     margin: {
-//       l: 30,
-//       r: 30,
-//       b: 30,
-//       t: 30,
-//       pad: 4
-//     },
-//     height: 250
-//   });
-// };

@@ -9,7 +9,6 @@ import {
   editorResizerElement,
   appButton,
   focusButton
-  // plotButton
 } from './extentions/composition.js';
 import { execute } from './commands/exec.js';
 import { newComp, resizer, run, State } from './commands/utils.js';
@@ -17,7 +16,7 @@ import { newComp, resizer, run, State } from './commands/utils.js';
 fullRunButton.addEventListener('click', run);
 appButton.addEventListener('click', () => execute({ value: 'SHOW' }));
 focusButton.addEventListener('click', () => execute({ value: 'FOCUS' }));
-// plotButton.addEventListener('click', () => execute({ value: 'PLOT' }));
+
 export const editor = CodeMirror(editorContainer, {});
 editor.changeFontSize('18px');
 editor.setSize(
