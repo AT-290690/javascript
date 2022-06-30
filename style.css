@@ -32,7 +32,7 @@
   --operator: #ff4a98;
   --type: cyan;
   --bracket: #546a90;
-  --font-family: 'BabyDoll';
+  --font-family: 'Fantastic';
 }
 text,
 input,
@@ -41,16 +41,16 @@ textarea {
   font-family: var(--font-family);
   font-size: 12pt;
 }
-/* @font-face {
+@font-face {
   font-family: 'Fantastic';
   src: url(assets/fonts/FantasqueSansMono-Regular.ttf) format('truetype');
   font-display: swap;
-} */
-@font-face {
+}
+/* @font-face {
   font-family: 'BabyDoll';
   src: url(assets/fonts/BabyDoll.ttf) format('truetype');
   font-display: swap;
-}
+} */
 /* @font-face {
   font-family: 'Hermit';
   src: url(assets/fonts/Hermit-Bold.otf) format('opentype');
