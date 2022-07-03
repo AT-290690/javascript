@@ -113,12 +113,10 @@ export const run = () => {
   consoleElement.classList.add('info_line');
   consoleElement.classList.remove('error_line');
   consoleElement.value = '';
-  // const preprocessed = editor.getValue().trim();
-  // console.log(preprocessed);
-  const out = exe(editor.getValue().trim(), null);
-  if (out) {
-    print(out);
-  }
+  const source = editor.getValue();
+  const out = exe(source.trim(), null);
+  if (out !== undefined) print(out);
+  return source;
 };
 
 // export const fromBase64 = (str, params) => {

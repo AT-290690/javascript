@@ -13,7 +13,9 @@ import {
 import { execute } from './commands/exec.js';
 import { newComp, resizer, run, State } from './commands/utils.js';
 
-fullRunButton.addEventListener('click', run);
+fullRunButton.addEventListener('click', () =>
+  window.localStorage.setItem('source', run())
+);
 appButton.addEventListener('click', () => execute({ value: 'SHOW' }));
 focusButton.addEventListener('click', () => execute({ value: 'FOCUS' }));
 
@@ -79,7 +81,7 @@ document.addEventListener('keydown', e => {
     e = e || window.event;
     e.preventDefault();
     e.stopPropagation();
-    run();
+    window.localStorage.setItem('source', run());
   } else if (e.key === 'Enter') {
     if (activeElement === consoleElement) {
       execute(consoleElement);
@@ -105,3 +107,4 @@ fullRunButton.style.display = 'block';
 canvasContainer.style.height = 253 + 'px';
 consoleElement.value = '';
 window.dispatchEvent(new Event('resize'));
+editor.setValue(window.localStorage.getItem('source') ?? '');
