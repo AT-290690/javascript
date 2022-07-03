@@ -20,7 +20,7 @@
   --def: #e8e5eb;
   --dec: #f470d3;
   --classname: #f470d3;
-  --control: #f6b233;
+  --control: #f4bd56;
   --property: #bd86f8;
   --atom: #ff4a98;
   --number: #7f83ff;
@@ -28,7 +28,7 @@
   --keyword: #ebe7e5;
   --self: #2e89ff;
   --separator: rgb(30, 250, 199);
-  --special: #faf619;
+  --special: rgb(106, 209, 228);
   --operator: #ff4a98;
   --type: cyan;
   --bracket: #546a90;

@@ -150,23 +150,6 @@ export const two = {
   width: (ratio = 1) => two.svgEngine.width * ratio,
   height: (ratio = 1) => two.svgEngine.height * ratio,
 
-  setOrigin: (entity, x, y) => {
-    entity.additions
-      ? entity.additions.forEach(item => {
-          item.position.set(item.position.x - x, item.position.y - y);
-        })
-      : entity.origin.set(x, y);
-    return entity;
-  },
-
-  noFill: entity => {
-    entity.noFill();
-    return entity;
-  },
-  noStroke: entity => {
-    entity.noStroke();
-    return entity;
-  },
   // resize: callback => {
   //   if (callback && typeof callback === 'function') {
   //     two.svgEngine.unbind('resize', callback);
@@ -200,6 +183,68 @@ two.svgEngine = Object.keys(two)
     }
   );
 
+window.Utils = {
+  pipe:
+    (...fns) =>
+    x =>
+      fns.reduce((v, f) => f(v), x),
+  setOrigin: (x, y) => entity => {
+    entity.additions
+      ? entity.additions.forEach(item => {
+          item.position.set(item.position.x - x, item.position.y - y);
+        })
+      : entity.origin.set(x, y);
+    return entity;
+  },
+  noStroke: entity => {
+    entity.noStroke();
+    return entity;
+  },
+  setFill: color => entity => {
+    entity.fill = color;
+    return entity;
+  },
+  setStroke: color => entity => {
+    entity.stroke = color;
+    return entity;
+  },
+  setPosition: (x, y) => entity => {
+    entity.position.set(x, y);
+    return entity;
+  },
+  setPositionY: y => entity => {
+    entity.position.y = y;
+    return entity;
+  },
+  setPositionX: x => entity => {
+    entity.position.x = x;
+    return entity;
+  },
+  setScale: scale => entity => {
+    entity.scale = scale;
+    return entity;
+  },
+  setOpacity: opacity => entity => {
+    entity.opacity = opacity;
+    return entity;
+  },
+  setRotation: rotation => entity => {
+    entity.rotation = rotation;
+    return entity;
+  },
+  setLinewidth: width => entity => {
+    entity.linewidth = width;
+    return entity;
+  },
+  noFill: entity => {
+    entity.noFill();
+    return entity;
+  },
+  noStroke: entity => {
+    entity.noStroke();
+    return entity;
+  }
+};
 window.Vector = Two.Vector;
 window.Engine = {
   render: two.makeScene,
@@ -207,7 +252,6 @@ window.Engine = {
   draw: two.draw,
   width: two.width,
   height: two.height,
-
   print: value => print(value)[0]
 };
 export const onError = err => two.destroyComposition();
