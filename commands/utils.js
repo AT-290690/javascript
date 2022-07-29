@@ -10,6 +10,7 @@ import {
 
 export const State = {
   lastSelection: '',
+  topLevel: '',
   activeWindow: null,
   comments: null,
   lastComposition: null,
@@ -95,7 +96,7 @@ const lastLineAutoReturn = source => {
 };
 export const exe = (source, params) => {
   try {
-    const result = new Function(`${source}`)();
+    const result = new Function(`${params.topLevel};${source}`)();
     droneIntel(alertIcon);
     return result;
   } catch (err) {
@@ -114,7 +115,7 @@ export const run = () => {
   consoleElement.classList.remove('error_line');
   consoleElement.value = '';
   const source = editor.getValue();
-  const out = exe(source.trim(), null);
+  const out = exe(source.trim(), { topLevel: State.topLevel });
   if (out !== undefined) print(out);
   return source;
 };
@@ -141,7 +142,7 @@ export const run = () => {
 //   });
 // };
 
-export const newComp = (userId = 'Unknown user') => {
+export const newComp = () => {
   const comp = document.createElement('div');
   comp.classList.add('composition');
   compositionContainer.appendChild(comp);

@@ -29,6 +29,11 @@ export const execute = async CONSOLE => {
       compositionContainer.innerHTML = '';
       consoleElement.value = '';
       break;
+    case 'TOP_LEVEL':
+      State.topLevel = editor.getValue();
+      editor.setValue('');
+      consoleElement.value = '';
+      break;
     case 'CLEAR':
       {
         editor.setValue('');

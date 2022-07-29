@@ -18,7 +18,7 @@ export const consoleResizerElement = document.getElementById('console-resizer');
 
 export const print = function (...values) {
   values.forEach(
-    x => (consoleElement.value += ` ( ${JSON.stringify(x) ?? undefined} ) `)
+    x => (consoleElement.value += `${JSON.stringify(x) ?? undefined}`)
   );
   return values;
 };
